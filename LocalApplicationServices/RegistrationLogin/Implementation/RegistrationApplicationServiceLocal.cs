@@ -4,6 +4,7 @@
     using Data.Unit_Of_Work;
     using DTOs.Models;
     using System;
+    using System.Collections.Generic;
 
     public class RegistrationApplicationServiceLocal : IRegistrationApplicationServiceLocal
     {
@@ -28,8 +29,8 @@
                 FirstName = command.FirstName,
                 LastName = command.LastName,
                 Password = command.Password,
-                Skills = null,
-                IsDeleted = false,
+                Skills = default(IList<Skill>),
+                IsDeleted = default(bool),
                 DateOfCreation = DateTime.UtcNow
             };
 

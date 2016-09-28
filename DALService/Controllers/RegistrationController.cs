@@ -10,7 +10,13 @@
 
     public class RegistrationController : BaseApiController
     {
-        public RegistrationController(IDALServiceData data) : base(data) { }
+        private readonly IRegistrationApplicationServiceLocal registrationApplicationServiceLocal;
+
+        public RegistrationController(IDALServiceData data, IRegistrationApplicationServiceLocal registrationApplicationServiceLocal) 
+            : base(data)
+        {
+            this.registrationApplicationServiceLocal = registrationApplicationServiceLocal;
+        }
 
         [HttpPost]
         public HttpResponseMessage Register([ModelBinder(typeof(CommandModelBinder))] CommandEnvelope envelope)
@@ -30,8 +36,7 @@
 
         private void ExecuteCommand(ICommand command)
         {
-            var handler = new ApplicationServiceHandler<IRegistrationApplicationServiceLocal>();
-            handler.Handle(new RegistrationApplicationServiceLocal(new DALServiceData()), command);
+            registrationApplicationServiceLocal.Execute((UserRegistration)command);
         }
     }
 }

@@ -47,8 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Handlers\ApplicationServiceHandler.cs" />
-    <Compile Include="Handlers\Contracts\IApplicationServiceHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationLogin\Contracts\IRegistrationApplicationServiceLocal.cs" />
     <Compile Include="RegistrationLogin\Implementation\RegistrationApplicationServiceLocal.cs" />

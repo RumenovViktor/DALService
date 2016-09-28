@@ -1,6 +1,9 @@
-﻿using Autofac;
+﻿using ApplicationServices;
+using Autofac;
 using Autofac.Integration.WebApi;
 using Data.Unit_Of_Work;
+using LocalApplicationServices;
+using Models;
 using System.Reflection;
 using System.Web.Http;
 
@@ -8,17 +11,17 @@ namespace DALService.App_Start
 {
     public class AutofacContainer
     {
-        public static ContainerBuilder Container { get; private set; }
+        private static IContainer Container { get; set; }
 
-        public static ContainerBuilder Initialize()
+        public static IContainer Initialize()
         {
-            Container = new ContainerBuilder();
-            Container.RegisterApiControllers(Assembly.GetExecutingAssembly());
-            RegisterDependancies(Container);
+            var builder = new ContainerBuilder();
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            RegisterDependancies(builder);
             var config = GlobalConfiguration.Configuration;
-            Container.RegisterWebApiFilterProvider(config);
-            var container = Container.Build();
-            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            builder.RegisterWebApiFilterProvider(config);
+            Container = builder.Build();
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(Container);
 
             return Container;
         }
@@ -26,6 +29,7 @@ namespace DALService.App_Start
         private static void RegisterDependancies(ContainerBuilder builder)
         {
             builder.RegisterType<DALServiceData>().As<IDALServiceData>();
+            builder.RegisterType<RegistrationApplicationServiceLocal>().As<IRegistrationApplicationServiceLocal>();
         }
     }
 }
