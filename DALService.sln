@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALService", "DALService\DALService.csproj", "{9716FCF5-702F-404F-8DC6-63FB85A3151C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALServiceTests", "DALServiceTests\DALServiceTests.csproj", "{7B50447C-A1E6-43DA-B1A1-3DA524CACEC6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DTOs", "DTOs", "{86E13F4C-21AC-4EE8-AE7F-0BF9C476FEC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOs", "DTOs\DTOs.csproj", "{D357286C-5A3D-4B10-8E75-70202A1E334E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{4933F900-A40D-498B-BEA9-416FF4060975}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{8CEEFE4B-D003-49EF-A929-A6FA668756E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalApplicationServices", "LocalApplicationServices\LocalApplicationServices.csproj", "{2FBC163D-5B7A-4D3E-8722-0A2A29007D1F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9716FCF5-702F-404F-8DC6-63FB85A3151C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9716FCF5-702F-404F-8DC6-63FB85A3151C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9716FCF5-702F-404F-8DC6-63FB85A3151C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9716FCF5-702F-404F-8DC6-63FB85A3151C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B50447C-A1E6-43DA-B1A1-3DA524CACEC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B50447C-A1E6-43DA-B1A1-3DA524CACEC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B50447C-A1E6-43DA-B1A1-3DA524CACEC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B50447C-A1E6-43DA-B1A1-3DA524CACEC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D357286C-5A3D-4B10-8E75-70202A1E334E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D357286C-5A3D-4B10-8E75-70202A1E334E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D357286C-5A3D-4B10-8E75-70202A1E334E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D357286C-5A3D-4B10-8E75-70202A1E334E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CEEFE4B-D003-49EF-A929-A6FA668756E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CEEFE4B-D003-49EF-A929-A6FA668756E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CEEFE4B-D003-49EF-A929-A6FA668756E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CEEFE4B-D003-49EF-A929-A6FA668756E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FBC163D-5B7A-4D3E-8722-0A2A29007D1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FBC163D-5B7A-4D3E-8722-0A2A29007D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FBC163D-5B7A-4D3E-8722-0A2A29007D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FBC163D-5B7A-4D3E-8722-0A2A29007D1F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D357286C-5A3D-4B10-8E75-70202A1E334E} = {86E13F4C-21AC-4EE8-AE7F-0BF9C476FEC9}
+		{8CEEFE4B-D003-49EF-A929-A6FA668756E6} = {4933F900-A40D-498B-BEA9-416FF4060975}
+	EndGlobalSection
+EndGlobal
