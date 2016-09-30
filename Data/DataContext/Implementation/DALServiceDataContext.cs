@@ -7,10 +7,7 @@
 
     public class DALServiceDataContext : DbContext, IDALServiceDataContext
     {
-        public DALServiceDataContext()
-            : base("ConnectWebsite")
-        {
-        }
+        public DALServiceDataContext() : base("ConnectWebsite") { }
 
         public IDbSet<User> Users { get; set; }
 

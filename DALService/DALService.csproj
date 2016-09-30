@@ -58,9 +58,6 @@
       <HintPath>..\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="LocalApplicationServices">
-      <HintPath>..\LocalApplicationServices\bin\Debug\LocalApplicationServices.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -254,6 +251,10 @@
     <ProjectReference Include="..\DTOs\DTOs.csproj">
       <Project>{d357286c-5a3d-4b10-8e75-70202a1e334e}</Project>
       <Name>DTOs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LocalApplicationServices\LocalApplicationServices.csproj">
+      <Project>{2fbc163d-5b7a-4d3e-8722-0a2a29007d1f}</Project>
+      <Name>LocalApplicationServices</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

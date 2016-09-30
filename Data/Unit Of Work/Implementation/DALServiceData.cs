@@ -18,8 +18,6 @@
 
         #region Ctor(s)
 
-        public DALServiceData(): this(new DALServiceDataContext()) { } // Use Autofac to inject dependancies.
-
         public DALServiceData(IDALServiceDataContext dalServiceDataContext)
         {
             m_DalServiceDataContext = dalServiceDataContext;

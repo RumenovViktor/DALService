@@ -1,9 +1,9 @@
 ﻿using ApplicationServices;
 using Autofac;
 using Autofac.Integration.WebApi;
+using Data.DataContext;
 using Data.Unit_Of_Work;
 using LocalApplicationServices;
-using Models;
 using System.Reflection;
 using System.Web.Http;
 
@@ -28,6 +28,7 @@ namespace DALService.App_Start
 
         private static void RegisterDependancies(ContainerBuilder builder)
         {
+            builder.RegisterType<DALServiceDataContext>().As<IDALServiceDataContext>();
             builder.RegisterType<DALServiceData>().As<IDALServiceData>();
             builder.RegisterType<RegistrationApplicationServiceLocal>().As<IRegistrationApplicationServiceLocal>();
         }

@@ -1,10 +1,11 @@
 ﻿namespace LocalApplicationServices
 {
+    using System;
+    using System.Collections.Generic;
+
     using Models;
     using Data.Unit_Of_Work;
     using DTOs.Models;
-    using System;
-    using System.Collections.Generic;
 
     public class RegistrationApplicationServiceLocal : IRegistrationApplicationServiceLocal
     {

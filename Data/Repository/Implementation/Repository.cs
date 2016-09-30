@@ -17,11 +17,6 @@
 
         #region Ctor(s)
 
-        public Repository()
-            : this(new DALServiceDataContext())
-        {
-        }
-
         public Repository(IDALServiceDataContext dataContext)
         {
             m_DataContext = dataContext;
