@@ -3,17 +3,15 @@
     using System.Net.Http;
     using System.Web.Http;
     using System.Web.Http.ModelBinding;
-    using Data.Unit_Of_Work;
     using System.Net;
     using Models;
     using LocalApplicationServices;
-
+    using Newtonsoft.Json; 
     public class RegistrationController : BaseApiController
     {
         private readonly IRegistrationApplicationServiceLocal registrationApplicationServiceLocal;
 
-        public RegistrationController(IDALServiceData data, IRegistrationApplicationServiceLocal registrationApplicationServiceLocal) 
-            : base(data)
+        public RegistrationController(IRegistrationApplicationServiceLocal registrationApplicationServiceLocal)
         {
             this.registrationApplicationServiceLocal = registrationApplicationServiceLocal;
         }
@@ -23,9 +21,8 @@
         {
             try
             {
-                ExecuteCommand(envelope.command);
-
-                return new HttpResponseMessage(HttpStatusCode.Accepted);
+                var executedCommand = ExecuteCommand(envelope.command);
+                return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (WebException e)
             {
@@ -34,9 +31,9 @@
             }
         }
 
-        private void ExecuteCommand(ICommand command)
+        private ICommand ExecuteCommand(ICommand command)
         {
-            registrationApplicationServiceLocal.Execute((UserRegistration)command);
+            return registrationApplicationServiceLocal.Execute((UserRegistration)command);
         }
     }
 }

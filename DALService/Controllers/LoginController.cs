@@ -8,8 +8,6 @@ namespace DALService.Controllers
 {
     public class LoginController : BaseApiController
     {
-        public LoginController(IDALServiceData data) : base(data) { }
-
         [HttpGet]
         public HttpResponseMessage GetUser()
         {

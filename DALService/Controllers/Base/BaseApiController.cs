@@ -6,23 +6,5 @@
 
     public class BaseApiController : ApiController
     {
-        #region Private Members
-
-        protected readonly IDALServiceData m_Data;
-
-        #endregion
-
-        #region Ctor(s)
-
-        protected BaseApiController(IDALServiceData data)
-        {
-            m_Data = data;
-        }
-
-        #endregion
-
-        #region Protected Methods
-
-        #endregion
     }
 }

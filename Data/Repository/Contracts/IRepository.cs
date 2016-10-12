@@ -1,14 +1,16 @@
 ﻿namespace Data.Repository
 {
     using System;
+    using System.Linq;
     using System.Linq.Expressions;
-    using System.Threading.Tasks;
 
     public interface IRepository<T>
     {
+        IQueryable<T> All();
+
         void AddEntity(T entity);
 
-        Task<T> FindEntity(Expression<Func<T, bool>> expression);
+        T FindEntity(Expression<Func<T, bool>> expression);
 
         void UpdateEntity(T entity);
 

@@ -44,6 +44,22 @@
             }
         }
 
+        public IRepository<Sector> Sectors
+        {
+            get
+            {
+                return this.GetRepository<Sector>();
+            }
+        }
+
+        public IRepository<Company> Companies
+        {
+            get
+            {
+                return this.GetRepository<Company>();
+            }
+        }
+
         #endregion
 
         #region Private Methods

@@ -12,6 +12,10 @@
 
         IDbSet<Skill> Skills { get; set; }
 
+        IDbSet<Sector> Sectors { get; set; }
+
+        IDbSet<Company> Companies { get; set; }
+
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
 
         DbEntityEntry Entry(object entity);

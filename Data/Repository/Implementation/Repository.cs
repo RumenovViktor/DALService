@@ -1,9 +1,9 @@
 ﻿namespace Data.Repository
 {
     using System;
+    using System.Linq;
     using System.Linq.Expressions;
     using System.Data.Entity;
-    using System.Threading.Tasks;
 
     using DataContext;
 
@@ -25,6 +25,15 @@
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        ///  Get all the records for the entity type.
+        /// </summary>
+        /// <returns>All the records for the entity type.</returns>
+        public IQueryable<T> All()
+        {
+            return m_DataContext.Set<T>().AsQueryable();
+        }
 
         /// <summary>
         /// Adds a new record to the databse.
@@ -72,16 +81,16 @@
         /// </summary>
         /// <param name="expression">Expression.</param>
         /// <returns>Found entity.</returns>
-        public Task<T> FindEntity(Expression<Func<T, bool>> expression)
+        public T FindEntity(Expression<Func<T, bool>> expression)
         {
-            Task<T> entity = null;
+            T entity = null;
 
             if (expression == null)
             {
                 throw new ArgumentNullException("Expression can not be null!");
             }
 
-            entity = m_DataContext.Set<T>().FindAsync(expression);
+            entity = m_DataContext.Set<T>().FirstOrDefault(expression);
             
             return entity;
         }

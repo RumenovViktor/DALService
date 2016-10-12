@@ -1,14 +1,16 @@
-﻿using ApplicationServices;
-using Autofac;
-using Autofac.Integration.WebApi;
-using Data.DataContext;
-using Data.Unit_Of_Work;
-using LocalApplicationServices;
-using System.Reflection;
-using System.Web.Http;
-
-namespace DALService.App_Start
+﻿namespace DALService.App_Start
 {
+    using System.Reflection;
+    using System.Web.Http;
+
+    using Autofac;
+    using Autofac.Integration.WebApi;
+
+    using Data.DataContext;
+    using Data.Unit_Of_Work;
+    using LocalApplicationServices;
+    using LocalApplicationServices.RegistrationLogin;
+
     public class AutofacContainer
     {
         private static IContainer Container { get; set; }
@@ -31,6 +33,7 @@ namespace DALService.App_Start
             builder.RegisterType<DALServiceDataContext>().As<IDALServiceDataContext>();
             builder.RegisterType<DALServiceData>().As<IDALServiceData>();
             builder.RegisterType<RegistrationApplicationServiceLocal>().As<IRegistrationApplicationServiceLocal>();
+            builder.RegisterType<BusinessInfoProvider>().As<IBusinessInfoProvider>();
         }
     }
 }
