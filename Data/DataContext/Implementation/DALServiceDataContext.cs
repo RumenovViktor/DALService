@@ -21,14 +21,16 @@
 
         public IDbSet<Company> Companies { get; set; }
 
+        public IDbSet<File> Files { get; set; }
+
         public virtual DbSet<TEntity> Set<TEntity>() where TEntity : class
         {
             return base.Set<TEntity>();
         }
 
-        public override Task<int> SaveChangesAsync() // TODO: Check if its the best way.
+        public override int SaveChanges() // TODO: Check if its the best way.
         {
-            return base.SaveChangesAsync();
+            return base.SaveChanges();
         }
     }
 }

@@ -34,6 +34,8 @@
             builder.RegisterType<DALServiceData>().As<IDALServiceData>();
             builder.RegisterType<RegistrationApplicationServiceLocal>().As<IRegistrationApplicationServiceLocal>();
             builder.RegisterType<BusinessInfoProvider>().As<IBusinessInfoProvider>();
+            builder.RegisterType<ImagesManagementApplicationServiceLocal>()
+                   .As<IFileManagementApplicationService>();
         }
     }
 }

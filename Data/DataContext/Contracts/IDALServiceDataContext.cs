@@ -20,6 +20,6 @@
 
         DbEntityEntry Entry(object entity);
 
-        Task<int> SaveChangesAsync();
+        int SaveChanges();
     }
 }

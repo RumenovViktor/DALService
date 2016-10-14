@@ -17,6 +17,7 @@
             this.businessInfoProvider = businessInfoProvider;
         }
 
+        // TODO: Move this to a new controller for users.
         [HttpGet]
         public HttpResponseMessage BasicUserInfo()
         {

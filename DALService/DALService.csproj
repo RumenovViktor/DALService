@@ -211,6 +211,7 @@
     <Compile Include="Commands\CommandEnvelope.cs" />
     <Compile Include="Controllers\Base\BaseApiController.cs" />
     <Compile Include="Controllers\BusinessInfoController.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Global.asax.cs">

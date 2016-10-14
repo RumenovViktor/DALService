@@ -7,10 +7,12 @@
     public class User
     {
         private ICollection<Skill> skills;
+        private ICollection<File> files;
 
         public User()
         {
             this.skills = new HashSet<Skill>();
+            this.files = new HashSet<File>();
         }
 
         [Key]
@@ -45,6 +47,18 @@
             set
             {
                 this.skills = value;
+            }
+        }
+
+        public virtual ICollection<File> Files
+        {
+            get
+            {
+                return this.files;
+            }
+            set
+            {
+                this.files = value;
             }
         }
     }

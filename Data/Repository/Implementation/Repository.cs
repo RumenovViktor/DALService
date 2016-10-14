@@ -110,7 +110,7 @@
 
         public void SaveChanges()
         {
-            m_DataContext.SaveChangesAsync();
+            m_DataContext.SaveChanges();
         }
 
         #endregion

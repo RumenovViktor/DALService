@@ -60,6 +60,14 @@
             }
         }
 
+        public IRepository<File> Files
+        {
+            get
+            {
+                return this.GetRepository<File>();
+            }
+        }
+
         #endregion
 
         #region Private Methods
