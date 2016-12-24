@@ -6,7 +6,7 @@
     using System.Net;
     using Models;
     using LocalApplicationServices;
-    using Newtonsoft.Json; 
+     
     public class RegistrationController : BaseApiController
     {
         private readonly IRegistrationApplicationServiceLocal registrationApplicationServiceLocal;
@@ -22,7 +22,7 @@
             try
             {
                 var executedCommand = ExecuteCommand(envelope.command);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                return Request.CreateResponse(HttpStatusCode.OK, executedCommand);
             }
             catch (WebException e)
             {

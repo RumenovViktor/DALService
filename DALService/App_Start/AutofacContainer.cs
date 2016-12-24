@@ -10,7 +10,9 @@
     using Data.Unit_Of_Work;
     using LocalApplicationServices;
     using LocalApplicationServices.RegistrationLogin;
-
+    using LocalApplicationServices.ProfileManagement;
+    using LocalApplicationServices.ProfileManagement.Contracts;
+    using LocalApplicationServices.ProfileManagement.Managers;
     public class AutofacContainer
     {
         private static IContainer Container { get; set; }
@@ -36,6 +38,8 @@
             builder.RegisterType<BusinessInfoProvider>().As<IBusinessInfoProvider>();
             builder.RegisterType<ImagesManagementApplicationServiceLocal>()
                    .As<IFileManagementApplicationService>();
+            builder.RegisterType<ProfileApplicationServiceLocal>().As<IProfileApplicationService>();
+            builder.RegisterType<ProfileManager>().As<IProfileManager>();
         }
     }
 }

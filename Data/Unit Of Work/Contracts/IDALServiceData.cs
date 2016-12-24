@@ -14,5 +14,7 @@ namespace Data.Unit_Of_Work
         IRepository<Company> Companies { get; }
 
         IRepository<File> Files { get; }
+
+        IRepository<Experience> Experience { get; }
     }
 }

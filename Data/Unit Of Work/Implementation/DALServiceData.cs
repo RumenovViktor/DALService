@@ -68,6 +68,14 @@
             }
         }
 
+        public IRepository<Experience> Experience
+        {
+            get
+            {
+                return this.GetRepository<Experience>();
+            }
+        }
+
         #endregion
 
         #region Private Methods

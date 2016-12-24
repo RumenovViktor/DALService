@@ -24,6 +24,16 @@
 
         private ICommand ExecuteSaveCommand(UserRegistration command)
         {
+            var existingUser = dalServiceData.Users.FindEntity(x => x.Email == command.Email);
+
+            if (existingUser != null)
+            {
+                return new UserRegistration()
+                {
+                    UserExists = true
+                };
+            }
+
             var newUser = new User()
             {
                 Email = command.Email,
@@ -32,7 +42,7 @@
                 Password = command.Password,
                 Skills = default(IList<Skill>),
                 IsDeleted = default(bool),
-                DateOfCreation = DateTime.UtcNow
+                DateOfCreation = DateTime.UtcNow,
             };
 
             dalServiceData.Users.AddEntity(newUser);

@@ -11,11 +11,6 @@ namespace DALService.Controllers
     {
         private readonly IFileManagementApplicationService imageManagementApplicationService;
 
-        //public FileUploadController()
-        //{
-        //    this.imageManagementApplicationService = new ImagesManagementApplicationServiceLocal();
-        //}
-
         public FileUploadController(IFileManagementApplicationService imageManagementApplicationService)
         {
             this.imageManagementApplicationService = imageManagementApplicationService;

@@ -8,11 +8,13 @@
     {
         private ICollection<Skill> skills;
         private ICollection<File> files;
+        private ICollection<Experience> experience;
 
         public User()
         {
             this.skills = new HashSet<Skill>();
             this.files = new HashSet<File>();
+            this.experience = new HashSet<Experience>();
         }
 
         [Key]
@@ -37,6 +39,18 @@
         public DateTime DateOfCreation { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public virtual ICollection<Experience> Experience
+        {
+            get
+            {
+                return this.experience;
+            }
+            set
+            {
+                this.experience = value;
+            }
+        }
 
         public virtual ICollection<Skill> Skills
         {

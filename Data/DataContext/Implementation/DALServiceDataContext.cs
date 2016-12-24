@@ -23,6 +23,8 @@
 
         public IDbSet<File> Files { get; set; }
 
+        public IDbSet<Experience> Experience { get; set; }
+
         public virtual DbSet<TEntity> Set<TEntity>() where TEntity : class
         {
             return base.Set<TEntity>();
