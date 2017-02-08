@@ -11,7 +11,7 @@
         public Experience(ExperienceViewModel source)
         {
             this.PositionDiscription = source.Description;
-            this.FromDate = source.StartDate;
+            this.FromDate = source.StartDate.Value;
             this.ToDate = source.EndDate;
             this.PositionName = source.Position;
         }
