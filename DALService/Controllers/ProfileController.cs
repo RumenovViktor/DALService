@@ -53,6 +53,17 @@ namespace DALService.Controllers
             }
         }
 
+        [HttpGet]
+        public HttpResponseMessage GetMatchedSkills(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+
+            var matchedSkills = profileManager.GetMatchedSkills(name);
+
+            return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(matchedSkills));
+        }
+
         private ICommand ExecuteCommand(ICommand command)
         {
             return profileApplicationService.Execute((ExperienceViewModel)command);

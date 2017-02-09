@@ -1,9 +1,15 @@
 ﻿namespace DTOs.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     public class Skill
     {
+        public Skill()
+        {
+            this.Users = new HashSet<User>();
+        }
+
         [Key]
         public int SkillId { get; set; }
 
@@ -12,8 +18,6 @@
 
         public bool IsDeleted { get; set; }
 
-        public int? UserId { get; set; }
-
-        public virtual User User { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }
