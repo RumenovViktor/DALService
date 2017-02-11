@@ -69,9 +69,8 @@ namespace DALService.Controllers
         {
             try
             {
-                profileApplicationService.Execute((SkillDtoWriteModel)envelope.command);
-
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var company = profileApplicationService.Execute((SkillDtoWriteModel)envelope.command);
+                return Request.CreateResponse(HttpStatusCode.OK, company);
             }
             catch (Exception)
             {

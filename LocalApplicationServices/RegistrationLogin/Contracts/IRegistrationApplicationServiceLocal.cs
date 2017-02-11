@@ -3,7 +3,9 @@
     using ApplicationServices;
     using Models;
 
-    public interface IRegistrationApplicationServiceLocal : IHandles<UserRegistration>
+    public interface IRegistrationApplicationServiceLocal 
+        : IHandles<UserRegistration>,
+          IHandles<CompanyRegistration>
     {
     }
 }

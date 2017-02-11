@@ -16,6 +16,24 @@
             dalServiceData = data;
         }
 
+        public CompanyRegistration Execute(CompanyRegistration command)
+        {
+            var company = dalServiceData.Companies.FindEntity(x => x.Name == command.CompanyName);
+
+            if (company != null)
+            {
+                return new CompanyRegistration()
+                {
+                    CompanyExists = true
+                };
+            }
+
+            dalServiceData.Companies.AddEntity(new Company(command));
+            dalServiceData.Companies.SaveChanges();
+
+            return command;
+        }
+
         public UserRegistration Execute(UserRegistration command)
         {
             var registeredUser = ExecuteSaveCommand(command);

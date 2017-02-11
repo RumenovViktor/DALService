@@ -31,6 +31,20 @@
             }
         }
 
+        public HttpResponseMessage CompanyRegister([ModelBinder(typeof(CommandModelBinder))] CommandEnvelope envelope)
+        {
+            try
+            {
+                var executedCommand = registrationApplicationServiceLocal.Execute((CompanyRegistration)envelope.command);
+                return Request.CreateResponse(HttpStatusCode.OK, executedCommand);
+            }
+            catch (WebException e)
+            {
+                // TODO: Log error in logger.
+                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            }
+        }
+
         private ICommand ExecuteCommand(ICommand command)
         {
             return registrationApplicationServiceLocal.Execute((UserRegistration)command);
