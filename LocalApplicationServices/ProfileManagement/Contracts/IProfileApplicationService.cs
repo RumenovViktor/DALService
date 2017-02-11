@@ -3,7 +3,9 @@
     using ApplicationServices;
     using Models;
 
-    public interface IProfileApplicationService : IHandles<ExperienceViewModel>
+    public interface IProfileApplicationService : 
+        IHandles<ExperienceViewModel>, 
+        IHandles<SkillDtoWriteModel>
     {
     }
 }

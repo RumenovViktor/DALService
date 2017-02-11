@@ -64,6 +64,22 @@ namespace DALService.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(matchedSkills));
         }
 
+        [HttpPost]
+        public HttpResponseMessage CreateSkill([ModelBinder(typeof(CommandModelBinder))] CommandEnvelope envelope)
+        {
+            try
+            {
+                profileApplicationService.Execute((SkillDtoWriteModel)envelope.command);
+
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception)
+            {
+                // Log with logger
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+        }
+
         private ICommand ExecuteCommand(ICommand command)
         {
             return profileApplicationService.Execute((ExperienceViewModel)command);
