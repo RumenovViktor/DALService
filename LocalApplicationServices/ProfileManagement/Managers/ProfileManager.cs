@@ -24,6 +24,18 @@ namespace LocalApplicationServices.ProfileManagement.Managers
             return matchedSkills.ToList();
         }
 
+        public CompanyProfile GetCompanyProfile(string companyName)
+        {
+            var companyProfile = dalServiceData.Companies.FindEntity(x => x.Name == companyName);
+
+            if (companyProfile == null)
+            {
+                throw new ArgumentException();
+            }
+
+            return new CompanyProfile(companyProfile.Email, companyProfile.Name, "Bulgaria");
+        }
+
         public Profile GetUserProfileInfo(string email)
         {
             var userExperience = dalServiceData.Users

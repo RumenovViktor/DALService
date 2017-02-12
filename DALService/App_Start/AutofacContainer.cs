@@ -13,6 +13,8 @@
     using LocalApplicationServices.ProfileManagement;
     using LocalApplicationServices.ProfileManagement.Contracts;
     using LocalApplicationServices.ProfileManagement.Managers;
+    using LocalApplicationServices.Validations;
+
     public class AutofacContainer
     {
         private static IContainer Container { get; set; }
@@ -40,6 +42,7 @@
                    .As<IFileManagementApplicationService>();
             builder.RegisterType<ProfileApplicationServiceLocal>().As<IProfileApplicationService>();
             builder.RegisterType<ProfileManager>().As<IProfileManager>();
+            builder.RegisterType<CompanyValidations>().As<ICompanyValidations>();
         }
     }
 }

@@ -30,12 +30,27 @@ namespace DALService.Controllers
             if (queryString.Count() != 0)
                 email = queryString.FirstOrDefault().Value;
             else
-                Request.CreateResponse(HttpStatusCode.NoContent);
+                return Request.CreateResponse(HttpStatusCode.NoContent);
 
             var basicUserInfoModel = profileManager.GetUserProfileInfo(email);
             var serializedModel = JsonConvert.SerializeObject(basicUserInfoModel);
 
             return Request.CreateResponse(HttpStatusCode.OK, serializedModel);
+        }
+
+        [HttpGet]
+        public HttpResponseMessage GetCompanyProfile()
+        {
+            var queryString = Request.GetQueryNameValuePairs();
+
+            if (!queryString.Any())
+                return Request.CreateResponse(HttpStatusCode.NoContent);
+
+            var companyName = queryString.FirstOrDefault().Value;
+
+            var companyProfle = profileManager.GetCompanyProfile(companyName);
+
+            return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(companyProfle));
         }
 
         [HttpPost]
