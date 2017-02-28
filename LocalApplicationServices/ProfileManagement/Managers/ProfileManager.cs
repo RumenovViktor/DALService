@@ -14,16 +14,6 @@ namespace LocalApplicationServices.ProfileManagement.Managers
         {
         }
 
-        public IList<SkillsDto> GetMatchedSkills(string name)
-        {
-            var matchedSkills = dalServiceData.Skills.All()
-                .Where(x => x.Name.ToLower().Contains(name.ToLower()))
-                .ToList()
-                .Select(x => new SkillsDto(x.SkillId, x.Name));
-
-            return matchedSkills.ToList();
-        }
-
         public CompanyProfile GetCompanyProfile(string companyName)
         {
             var companyProfile = dalServiceData.Companies.FindEntity(x => x.Name == companyName);

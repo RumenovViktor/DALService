@@ -38,6 +38,7 @@ namespace DALService.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, serializedModel);
         }
 
+        // TODO: Move to CompanyProfileController
         [HttpGet]
         public HttpResponseMessage GetCompanyProfile()
         {
@@ -56,47 +57,10 @@ namespace DALService.Controllers
         [HttpPost]
         public HttpResponseMessage AddExperience([ModelBinder(typeof(CommandModelBinder))] CommandEnvelope envelope)
         {
-            try
+            return ExecuteAction(() =>
             {
-                var executedCommand = ExecuteCommand(envelope.command);
-                return Request.CreateResponse(HttpStatusCode.OK, executedCommand);
-            }
-            catch (WebException e)
-            {
-                // TODO: Log error in logger.
-                return new HttpResponseMessage(HttpStatusCode.BadRequest);
-            }
-        }
-
-        [HttpGet]
-        public HttpResponseMessage GetMatchedSkills(string name)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-                return new HttpResponseMessage(HttpStatusCode.BadRequest);
-
-            var matchedSkills = profileManager.GetMatchedSkills(name);
-
-            return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(matchedSkills));
-        }
-
-        [HttpPost]
-        public HttpResponseMessage CreateSkill([ModelBinder(typeof(CommandModelBinder))] CommandEnvelope envelope)
-        {
-            try
-            {
-                var company = profileApplicationService.Execute((SkillDtoWriteModel)envelope.command);
-                return Request.CreateResponse(HttpStatusCode.OK, company);
-            }
-            catch (Exception)
-            {
-                // Log with logger
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-        }
-
-        private ICommand ExecuteCommand(ICommand command)
-        {
-            return profileApplicationService.Execute((ExperienceViewModel)command);
+                return profileApplicationService.Execute((ExperienceViewModel)envelope.command);
+            });
         }
     }
 }

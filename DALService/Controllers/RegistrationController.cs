@@ -19,35 +19,19 @@
         [HttpPost]
         public HttpResponseMessage Register([ModelBinder(typeof(CommandModelBinder))] CommandEnvelope envelope)
         {
-            try
+            return ExecuteAction(() => 
             {
-                var executedCommand = ExecuteCommand(envelope.command);
-                return Request.CreateResponse(HttpStatusCode.OK, executedCommand);
-            }
-            catch (WebException e)
-            {
-                // TODO: Log error in logger.
-                return new HttpResponseMessage(HttpStatusCode.BadRequest);
-            }
+                return registrationApplicationServiceLocal.Execute((UserRegistration)envelope.command);
+            });
         }
 
+        [HttpPost]
         public HttpResponseMessage CompanyRegister([ModelBinder(typeof(CommandModelBinder))] CommandEnvelope envelope)
         {
-            try
+            return ExecuteAction(() =>
             {
-                var executedCommand = registrationApplicationServiceLocal.Execute((CompanyRegistration)envelope.command);
-                return Request.CreateResponse(HttpStatusCode.OK, executedCommand);
-            }
-            catch (WebException e)
-            {
-                // TODO: Log error in logger.
-                return new HttpResponseMessage(HttpStatusCode.BadRequest);
-            }
-        }
-
-        private ICommand ExecuteCommand(ICommand command)
-        {
-            return registrationApplicationServiceLocal.Execute((UserRegistration)command);
+                return registrationApplicationServiceLocal.Execute((CompanyRegistration)envelope.command);
+            });
         }
     }
 }

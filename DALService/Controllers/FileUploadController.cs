@@ -19,8 +19,10 @@ namespace DALService.Controllers
         [HttpPost]
         public HttpResponseMessage UploadImage([ModelBinder(typeof(CommandModelBinder))] CommandEnvelope envelope)
         {
-            imageManagementApplicationService.Execute((File)envelope.command);
-            return Request.CreateResponse(HttpStatusCode.OK);
+            return ExecuteAction(() => 
+            {
+                return imageManagementApplicationService.Execute((File)envelope.command);
+            });
         }
     }
 }

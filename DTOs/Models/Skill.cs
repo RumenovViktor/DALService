@@ -9,11 +9,12 @@
         public Skill()
         {
             this.Users = new HashSet<User>();
+            this.Positions = new HashSet<Position>();
         }
 
-        public Skill(SkillDtoWriteModel source)
+        public Skill(string name)
         {
-            this.Name = source.Name;
+            this.Name = name;
             this.IsDeleted = false;
         }
 
@@ -26,5 +27,7 @@
         public bool IsDeleted { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
+
+        public virtual ICollection<Position> Positions { get; set; }
     }
 }
