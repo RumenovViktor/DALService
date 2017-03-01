@@ -13,6 +13,9 @@
     using LocalApplicationServices.ProfileManagement;
     using LocalApplicationServices.ProfileManagement.Contracts;
     using LocalApplicationServices.ProfileManagement.Managers;
+    using LocalApplicationServices.Validations;
+    using ApplicationServices;
+
     public class AutofacContainer
     {
         private static IContainer Container { get; set; }
@@ -37,9 +40,13 @@
             builder.RegisterType<RegistrationApplicationServiceLocal>().As<IRegistrationApplicationServiceLocal>();
             builder.RegisterType<BusinessInfoProvider>().As<IBusinessInfoProvider>();
             builder.RegisterType<ImagesManagementApplicationServiceLocal>()
-                   .As<IFileManagementApplicationService>();
+                   .As<LocalApplicationServices.IFileManagementApplicationService>();
             builder.RegisterType<ProfileApplicationServiceLocal>().As<IProfileApplicationService>();
             builder.RegisterType<ProfileManager>().As<IProfileManager>();
+            builder.RegisterType<CompanyValidations>().As<ICompanyValidations>();
+            builder.RegisterType<CompanyProfileApplicationServiceLocal>().As<ICompanyProfileApplicationService>();
+            builder.RegisterType<LocalApplicationServices.SkillsManager>().As<ISkillsManager>();
+            builder.RegisterType<SkillsApplicationServiceLocal>().As<ISkillsApplicationService>();
         }
     }
 }

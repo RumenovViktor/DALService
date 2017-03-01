@@ -16,5 +16,7 @@ namespace Data.Unit_Of_Work
         IRepository<File> Files { get; }
 
         IRepository<Experience> Experience { get; }
+
+        IRepository<Position> Positions { get; }
     }
 }

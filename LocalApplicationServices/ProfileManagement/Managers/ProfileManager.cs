@@ -14,14 +14,17 @@ namespace LocalApplicationServices.ProfileManagement.Managers
         {
         }
 
-        public IList<SkillsDto> GetMatchedSkills(string name)
+        public CompanyProfile GetCompanyProfile(string companyName)
         {
-            var matchedSkills = dalServiceData.Skills.All()
-                .Where(x => x.Name.ToLower().Contains(name.ToLower()))
-                .ToList()
-                .Select(x => new SkillsDto(x.SkillId, x.Name));
+            var companyProfile = dalServiceData.Companies.FindEntity(x => x.Name == companyName);
+            var mappedCompanyPositions = companyProfile.Positions.Select(x => new CreatedPosition(x.Id, x.PositionName)).ToList();
 
-            return matchedSkills.ToList();
+            if (companyProfile == null)
+            {
+                throw new ArgumentException();
+            }
+
+            return new CompanyProfile(companyProfile.Email, companyProfile.Name, "Bulgaria", mappedCompanyPositions);
         }
 
         public Profile GetUserProfileInfo(string email)

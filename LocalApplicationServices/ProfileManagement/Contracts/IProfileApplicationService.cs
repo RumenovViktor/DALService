@@ -4,8 +4,7 @@
     using Models;
 
     public interface IProfileApplicationService : 
-        IHandles<ExperienceViewModel>, 
-        IHandles<SkillDtoWriteModel>
+        IHandles<ExperienceViewModel>
     {
     }
 }

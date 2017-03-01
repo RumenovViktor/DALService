@@ -30,7 +30,7 @@ namespace DALService.Controllers
             if (queryString.Count() != 0)
                 email = queryString.FirstOrDefault().Value;
             else
-                Request.CreateResponse(HttpStatusCode.NoContent);
+                return Request.CreateResponse(HttpStatusCode.NoContent);
 
             var basicUserInfoModel = profileManager.GetUserProfileInfo(email);
             var serializedModel = JsonConvert.SerializeObject(basicUserInfoModel);
@@ -38,50 +38,29 @@ namespace DALService.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, serializedModel);
         }
 
+        // TODO: Move to CompanyProfileController
+        [HttpGet]
+        public HttpResponseMessage GetCompanyProfile()
+        {
+            var queryString = Request.GetQueryNameValuePairs();
+
+            if (!queryString.Any())
+                return Request.CreateResponse(HttpStatusCode.NoContent);
+
+            var companyName = queryString.FirstOrDefault().Value;
+
+            var companyProfle = profileManager.GetCompanyProfile(companyName);
+
+            return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(companyProfle));
+        }
+
         [HttpPost]
         public HttpResponseMessage AddExperience([ModelBinder(typeof(CommandModelBinder))] CommandEnvelope envelope)
         {
-            try
+            return ExecuteAction(() =>
             {
-                var executedCommand = ExecuteCommand(envelope.command);
-                return Request.CreateResponse(HttpStatusCode.OK, executedCommand);
-            }
-            catch (WebException e)
-            {
-                // TODO: Log error in logger.
-                return new HttpResponseMessage(HttpStatusCode.BadRequest);
-            }
-        }
-
-        [HttpGet]
-        public HttpResponseMessage GetMatchedSkills(string name)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-                return new HttpResponseMessage(HttpStatusCode.BadRequest);
-
-            var matchedSkills = profileManager.GetMatchedSkills(name);
-
-            return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(matchedSkills));
-        }
-
-        [HttpPost]
-        public HttpResponseMessage CreateSkill([ModelBinder(typeof(CommandModelBinder))] CommandEnvelope envelope)
-        {
-            try
-            {
-                var company = profileApplicationService.Execute((SkillDtoWriteModel)envelope.command);
-                return Request.CreateResponse(HttpStatusCode.OK, company);
-            }
-            catch (Exception)
-            {
-                // Log with logger
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-        }
-
-        private ICommand ExecuteCommand(ICommand command)
-        {
-            return profileApplicationService.Execute((ExperienceViewModel)command);
+                return profileApplicationService.Execute((ExperienceViewModel)envelope.command);
+            });
         }
     }
 }

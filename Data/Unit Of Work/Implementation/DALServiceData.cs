@@ -76,6 +76,14 @@
             }
         }
 
+        public IRepository<Position> Positions
+        {
+            get
+            {
+                return this.GetRepository<Position>();
+            }
+        }
+
         #endregion
 
         #region Private Methods

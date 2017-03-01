@@ -9,6 +9,7 @@
         public Company()
         {
             this.Sectors = new HashSet<Sector>();
+            this.Positions = new HashSet<Position>();
         }
 
         public Company(CompanyRegistration source)
@@ -28,5 +29,7 @@
         public string Password { get; set; }
 
         public virtual ICollection<Sector> Sectors { get; set; }
+
+        public virtual ICollection<Position> Positions { get; set; }
     }
 }

@@ -54,8 +54,11 @@
     <Compile Include="Base.cs" />
     <Compile Include="ProfileManagement\Contracts\IProfileApplicationService.cs" />
     <Compile Include="ProfileManagement\Contracts\IProfileManager.cs" />
+    <Compile Include="ProfileManagement\Implementation\CompanyProfileApplicationServiceLocal.cs" />
     <Compile Include="ProfileManagement\Implementation\ProfileApplicationServiceLocal.cs" />
+    <Compile Include="ProfileManagement\Implementation\SkillsApplicationServiceLocal.cs" />
     <Compile Include="ProfileManagement\Managers\ProfileManager.cs" />
+    <Compile Include="ProfileManagement\Managers\SkillsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationLogin\Contracts\IBusinessInfoProvider.cs" />
     <Compile Include="FileManagement\Contracts\IFileManagementApplicationService.cs" />
@@ -63,6 +66,8 @@
     <Compile Include="FileManagement\Implementation\ImagesManagementApplicationServiceLocal.cs" />
     <Compile Include="RegistrationLogin\Implementation\Managers\BusinessInfoProvider.cs" />
     <Compile Include="RegistrationLogin\Implementation\RegistrationApplicationServiceLocal.cs" />
+    <Compile Include="Validations\Contracts\ICompanyValidations.cs" />
+    <Compile Include="Validations\CompanyValidations.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
@@ -74,6 +79,7 @@
       <Name>DTOs</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
