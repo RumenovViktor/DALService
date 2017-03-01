@@ -18,7 +18,11 @@
 
         [Required]
         public string Description { get; set; }
-        
+
+        public long CompanyId { get; set; }
+
+        public virtual Company Company { get; set; }
+
         public virtual ICollection<Skill> RequiredSkills { get; set; }
     }
 }

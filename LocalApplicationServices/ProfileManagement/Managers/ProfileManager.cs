@@ -17,13 +17,14 @@ namespace LocalApplicationServices.ProfileManagement.Managers
         public CompanyProfile GetCompanyProfile(string companyName)
         {
             var companyProfile = dalServiceData.Companies.FindEntity(x => x.Name == companyName);
+            var mappedCompanyPositions = companyProfile.Positions.Select(x => new CreatedPosition(x.Id, x.PositionName)).ToList();
 
             if (companyProfile == null)
             {
                 throw new ArgumentException();
             }
 
-            return new CompanyProfile(companyProfile.Email, companyProfile.Name, "Bulgaria");
+            return new CompanyProfile(companyProfile.Email, companyProfile.Name, "Bulgaria", mappedCompanyPositions);
         }
 
         public Profile GetUserProfileInfo(string email)
