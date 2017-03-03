@@ -6,6 +6,7 @@
     using Models;
     using Data.Unit_Of_Work;
     using Utils;
+    using Models.Global;
 
     public class BusinessInfoProvider : IBusinessInfoProvider
     {
@@ -21,9 +22,11 @@
             BasicUserInfo basicUserInfo = null;
             var registeredUser = dalServiceData.Users.FindEntity(x => x.Email == email);
             var profileImage = registeredUser.Files.Select(x => x.FileInputStream).FirstOrDefault();
+            var country = dalServiceData.Countries.FindEntity(x => x.CountryId == registeredUser.CountryId);
 
             if (registeredUser != null)
-                basicUserInfo = new BasicUserInfo(registeredUser.UserId, profileImage, registeredUser.Email, registeredUser.FirstName, registeredUser.LastName, Gender.Male, registeredUser.DateOfCreation);
+                basicUserInfo = new BasicUserInfo(registeredUser.UserId, profileImage, registeredUser.Email, registeredUser.FirstName, registeredUser.LastName, 
+                                                    Gender.Male, registeredUser.DateOfCreation, new CountryReadModel(country.CountryId, country.NiceName));
 
             return basicUserInfo;
         }

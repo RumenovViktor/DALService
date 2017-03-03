@@ -84,6 +84,14 @@
             }
         }
 
+        public IRepository<Country> Countries
+        {
+            get
+            {
+                return this.GetRepository<Country>();
+            }
+        }
+
         #endregion
 
         #region Private Methods

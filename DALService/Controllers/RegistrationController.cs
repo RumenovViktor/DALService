@@ -6,14 +6,26 @@
     using System.Net;
     using Models;
     using LocalApplicationServices;
-     
+    using ApplicationServices;
+
     public class RegistrationController : BaseApiController
     {
+        protected readonly ICommonInfoManager commonInfoReadStore;
         private readonly IRegistrationApplicationServiceLocal registrationApplicationServiceLocal;
 
-        public RegistrationController(IRegistrationApplicationServiceLocal registrationApplicationServiceLocal)
+        public RegistrationController(IRegistrationApplicationServiceLocal registrationApplicationServiceLocal, ICommonInfoManager commonInfoReadStore)
         {
+            this.commonInfoReadStore = commonInfoReadStore;
             this.registrationApplicationServiceLocal = registrationApplicationServiceLocal;
+        }
+
+        [HttpGet]
+        public HttpResponseMessage GetActivityArea()
+        {
+            return ExecuteAction(() =>
+            {
+                return commonInfoReadStore.GetActivityArea();
+            });
         }
 
         [HttpPost]

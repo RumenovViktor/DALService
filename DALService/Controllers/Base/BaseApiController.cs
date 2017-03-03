@@ -7,6 +7,7 @@
     using System;
     using System.Net;
     using Newtonsoft.Json;
+    using ApplicationServices;
 
     public class BaseApiController : ApiController
     {
@@ -19,7 +20,7 @@
             }
             catch(Exception e)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, e);
             }
         }
     }

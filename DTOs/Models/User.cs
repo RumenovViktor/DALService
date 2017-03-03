@@ -36,6 +36,10 @@
         [StringLength(50)]
         public string Email { get; set; }
 
+        public int? CountryId { get; set; }
+
+        public Country Country { get; set; }
+
         public DateTime DateOfCreation { get; set; }
 
         public bool IsDeleted { get; set; }

@@ -47,6 +47,7 @@
             builder.RegisterType<CompanyProfileApplicationServiceLocal>().As<ICompanyProfileApplicationService>();
             builder.RegisterType<LocalApplicationServices.SkillsManager>().As<ISkillsManager>();
             builder.RegisterType<SkillsApplicationServiceLocal>().As<ISkillsApplicationService>();
+            builder.RegisterType<LocalApplicationServices.CommonInfoManager>().As<ICommonInfoManager>();
         }
     }
 }

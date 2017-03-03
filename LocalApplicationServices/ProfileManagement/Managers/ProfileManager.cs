@@ -4,6 +4,7 @@ using LocalApplicationServices.ProfileManagement.Contracts;
 using Models;
 using Data.Unit_Of_Work;
 using System.Collections.Generic;
+using Models.Global;
 
 namespace LocalApplicationServices.ProfileManagement.Managers
 {
@@ -18,13 +19,14 @@ namespace LocalApplicationServices.ProfileManagement.Managers
         {
             var companyProfile = dalServiceData.Companies.FindEntity(x => x.Name == companyName);
             var mappedCompanyPositions = companyProfile.Positions.Select(x => new CreatedPosition(x.Id, x.PositionName)).ToList();
+            var country = dalServiceData.Countries.FindEntity(x => x.CountryId == companyProfile.CountryId);
 
             if (companyProfile == null)
             {
                 throw new ArgumentException();
             }
 
-            return new CompanyProfile(companyProfile.Email, companyProfile.Name, "Bulgaria", mappedCompanyPositions);
+            return new CompanyProfile(companyProfile.Email, companyProfile.Name, new CountryReadModel(country.CountryId, country.NiceName), mappedCompanyPositions);
         }
 
         public Profile GetUserProfileInfo(string email)

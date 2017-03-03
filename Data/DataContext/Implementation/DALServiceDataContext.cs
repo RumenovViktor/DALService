@@ -27,6 +27,8 @@
 
         public IDbSet<Position> Positions { get; set; }
 
+        public IDbSet<Country> Countries { get; set; }
+
         public virtual DbSet<TEntity> Set<TEntity>() where TEntity : class
         {
             return base.Set<TEntity>();

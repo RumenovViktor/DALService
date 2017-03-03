@@ -65,6 +65,7 @@
     <Compile Include="RegistrationLogin\Contracts\IRegistrationApplicationServiceLocal.cs" />
     <Compile Include="FileManagement\Implementation\ImagesManagementApplicationServiceLocal.cs" />
     <Compile Include="RegistrationLogin\Implementation\Managers\BusinessInfoProvider.cs" />
+    <Compile Include="RegistrationLogin\Implementation\Managers\CommonInfoManager.cs" />
     <Compile Include="RegistrationLogin\Implementation\RegistrationApplicationServiceLocal.cs" />
     <Compile Include="Validations\Contracts\ICompanyValidations.cs" />
     <Compile Include="Validations\CompanyValidations.cs" />

@@ -61,6 +61,7 @@
                 Skills = default(IList<Skill>),
                 IsDeleted = default(bool),
                 DateOfCreation = DateTime.UtcNow,
+                CountryId = command.CountryId
             };
 
             dalServiceData.Users.AddEntity(newUser);

@@ -18,5 +18,7 @@ namespace Data.Unit_Of_Work
         IRepository<Experience> Experience { get; }
 
         IRepository<Position> Positions { get; }
+
+        IRepository<Country> Countries { get; }
     }
 }
