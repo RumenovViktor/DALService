@@ -28,7 +28,10 @@
                 };
             }
 
-            dalServiceData.Companies.AddEntity(new Company(command));
+            var sector = dalServiceData.Sectors.FindEntity(x => x.Id == command.SectorId.Value);
+            var newCompany = new Company(command, sector);
+
+            dalServiceData.Companies.AddEntity(newCompany);
             dalServiceData.Companies.SaveChanges();
 
             return command;

@@ -21,6 +21,12 @@
             this.Password = source.Password;
         }
 
+        public Company(CompanyRegistration source, Sector sector) : this(source)
+        {
+            this.Sectors = new HashSet<Sector>();
+            this.Sectors.Add(sector);
+        }
+
         [Key]
         public int Id { get; set; }
 

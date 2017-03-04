@@ -4,6 +4,7 @@
     using ApplicationServices;
     using Models.Global;
     using Data.Unit_Of_Work;
+    using Models;
 
     public class CommonInfoManager : ICommonInfoManager
     {
@@ -17,7 +18,9 @@
         public ActivityAreaReadModel GetActivityArea()
         {
             var countries = dalServiceData.Countries.All().ToList().Select(x => new CountryReadModel(x.CountryId, x.NiceName)).ToList();
-            return new ActivityAreaReadModel(countries);
+            var sectors = dalServiceData.Sectors.All().ToList().Select(x => new SupportedSector(x.Id, x.Name)).ToList();
+
+            return new ActivityAreaReadModel(countries, sectors);
         }
     }
 }

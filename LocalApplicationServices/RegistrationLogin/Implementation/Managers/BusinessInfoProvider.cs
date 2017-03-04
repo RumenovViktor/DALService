@@ -33,14 +33,10 @@
 
         public IList<SupportedSector> GetAllSupportedSectors()
         {
-            var allSupportedSectorsFromDb = dalServiceData.Sectors.All();
 
+            var allSupportedSectorsFromDb = dalServiceData.Sectors.All().ToList();
             var allSupportedSectors = allSupportedSectorsFromDb
-                    .Select(x => new SupportedSector()
-                    {
-                        Id = x.Id,
-                        Name = x.Name
-                    }).ToList();
+                    .Select(x => new SupportedSector(x.Id, x.Name)).ToList();
 
             return allSupportedSectors;
         }
