@@ -18,7 +18,8 @@
 
         public CompanyRegistration Execute(CompanyRegistration command)
         {
-            var company = dalServiceData.Companies.FindEntity(x => x.Name == command.CompanyName);
+            var company = dalServiceData.Companies
+                .FindEntity(x => (x.CountryId == command.CountryId && x.Name == command.CompanyName) || x.Email == command.Email);
 
             if (company != null)
             {
@@ -34,7 +35,14 @@
             dalServiceData.Companies.AddEntity(newCompany);
             dalServiceData.Companies.SaveChanges();
 
-            return command;
+            var existingCompany = dalServiceData.Companies
+                .FindEntity(x => (x.CountryId == command.CountryId && x.Name == command.CompanyName) || x.Email == command.Email);
+
+            return new CompanyRegistration()
+            {
+                CompanyId = existingCompany.Id,
+                CompanyExists = false
+            };
         }
 
         public UserRegistration Execute(UserRegistration command)

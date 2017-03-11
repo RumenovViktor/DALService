@@ -1,4 +1,7 @@
 ﻿using Models;
+using Models.Profile;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace LocalApplicationServices.ProfileManagement.Contracts
 {
@@ -6,6 +9,8 @@ namespace LocalApplicationServices.ProfileManagement.Contracts
     {
         Profile GetUserProfileInfo(string email);
 
-        CompanyProfile GetCompanyProfile(string companyName);
+        CompanyProfile GetCompanyProfile(long companyId);
+
+        IList<UserSuitiblePosition> GetSuitiblePositions(string sectorId, string countryId, string userId);
     }
 }

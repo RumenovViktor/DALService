@@ -47,9 +47,9 @@ namespace DALService.Controllers
             if (!queryString.Any())
                 return Request.CreateResponse(HttpStatusCode.NoContent);
 
-            var companyName = queryString.FirstOrDefault().Value;
+            var companyId = int.Parse(queryString.FirstOrDefault().Value);
 
-            var companyProfle = profileManager.GetCompanyProfile(companyName);
+            var companyProfle = profileManager.GetCompanyProfile(companyId);
 
             return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(companyProfle));
         }
@@ -60,6 +60,20 @@ namespace DALService.Controllers
             return ExecuteAction(() =>
             {
                 return profileApplicationService.Execute((ExperienceViewModel)envelope.command);
+            });
+        }
+
+        [HttpGet]
+        public HttpResponseMessage GetSuitiblePositions()
+        {
+            return ExecuteAction(() =>
+            {
+                var queryString = Request.GetQueryNameValuePairs();
+                var sectorId = queryString.Where(x => x.Key == "sectorId").FirstOrDefault().Value;
+                var countryId = queryString.Where(x => x.Key == "countryId").FirstOrDefault().Value;
+                var userId = queryString.Where(x => x.Key == "userId").FirstOrDefault().Value;
+
+                return profileManager.GetSuitiblePositions(sectorId, countryId, userId);
             });
         }
     }
