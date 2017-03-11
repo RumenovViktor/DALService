@@ -269,6 +269,10 @@
       <Project>{d357286c-5a3d-4b10-8e75-70202a1e334e}</Project>
       <Name>DTOs</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Executors\Executors.csproj">
+      <Project>{58c99129-bf6b-4cd7-bbd1-a9d7564079bb}</Project>
+      <Name>Executors</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LocalApplicationServices\LocalApplicationServices.csproj">
       <Project>{2fbc163d-5b7a-4d3e-8722-0a2a29007d1f}</Project>
       <Name>LocalApplicationServices</Name>

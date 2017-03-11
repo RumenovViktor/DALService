@@ -13,10 +13,10 @@
 
         public IList<SkillsDto> GetMatchedSkills(string name)
         {
-                var matchedSkills = dalServiceData.Skills.All()
-                                    .Where(x => x.Name.ToLower().Contains(name.ToLower()))
-                                    .ToList()
-                                    .Select(x => new SkillsDto(x.SkillId, x.Name));
+            var matchedSkills = dalServiceData.Skills.All()
+                                .Where(x => x.Name.ToLower().Contains(name.ToLower()))
+                                .ToList()
+                                .Select(x => new SkillsDto(x.SkillId, x.Name));
 
             return matchedSkills.ToList();
         }

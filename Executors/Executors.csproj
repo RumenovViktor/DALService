@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2FBC163D-5B7A-4D3E-8722-0A2A29007D1F}</ProjectGuid>
+    <ProjectGuid>{58C99129-BF6B-4CD7-BBD1-A9D7564079BB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LocalApplicationServices</RootNamespace>
-    <AssemblyName>LocalApplicationServices</AssemblyName>
+    <RootNamespace>Executors</RootNamespace>
+    <AssemblyName>Executors</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ApplicationServices">
-      <HintPath>..\..\Connect\ApplicationServices\bin\Debug\ApplicationServices.dll</HintPath>
-    </Reference>
     <Reference Include="Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Connect\Models\bin\Debug\Models.dll</HintPath>
@@ -45,30 +42,11 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Connect\Models\bin\Debug\Utils.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base.cs" />
-    <Compile Include="ProfileManagement\Contracts\IProfileApplicationService.cs" />
-    <Compile Include="ProfileManagement\Contracts\IProfileManager.cs" />
-    <Compile Include="ProfileManagement\Implementation\CompanyProfileApplicationServiceLocal.cs" />
-    <Compile Include="ProfileManagement\Implementation\ProfileApplicationServiceLocal.cs" />
-    <Compile Include="ProfileManagement\Implementation\SkillsApplicationServiceLocal.cs" />
-    <Compile Include="ProfileManagement\Managers\ProfileManager.cs" />
-    <Compile Include="ProfileManagement\Managers\SkillsManager.cs" />
+    <Compile Include="MatchingExecutor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistrationLogin\Contracts\IBusinessInfoProvider.cs" />
-    <Compile Include="FileManagement\Contracts\IFileManagementApplicationService.cs" />
-    <Compile Include="RegistrationLogin\Contracts\IRegistrationApplicationServiceLocal.cs" />
-    <Compile Include="FileManagement\Implementation\ImagesManagementApplicationServiceLocal.cs" />
-    <Compile Include="RegistrationLogin\Implementation\Managers\BusinessInfoProvider.cs" />
-    <Compile Include="RegistrationLogin\Implementation\Managers\CommonInfoManager.cs" />
-    <Compile Include="RegistrationLogin\Implementation\RegistrationApplicationServiceLocal.cs" />
-    <Compile Include="Validations\Contracts\ICompanyValidations.cs" />
-    <Compile Include="Validations\CompanyValidations.cs" />
+    <Compile Include="UserMatchingExecutor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
@@ -79,12 +57,7 @@
       <Project>{d357286c-5a3d-4b10-8e75-70202a1e334e}</Project>
       <Name>DTOs</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Executors\Executors.csproj">
-      <Project>{58c99129-bf6b-4cd7-bbd1-a9d7564079bb}</Project>
-      <Name>Executors</Name>
-    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

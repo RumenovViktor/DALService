@@ -5,6 +5,8 @@ using Models;
 using Data.Unit_Of_Work;
 using System.Collections.Generic;
 using Models.Global;
+using Models.Profile;
+using Executors;
 
 namespace LocalApplicationServices.ProfileManagement.Managers
 {
@@ -15,9 +17,9 @@ namespace LocalApplicationServices.ProfileManagement.Managers
         {
         }
 
-        public CompanyProfile GetCompanyProfile(string companyName)
+        public CompanyProfile GetCompanyProfile(long companyId)
         {
-            var companyProfile = dalServiceData.Companies.FindEntity(x => x.Name == companyName);
+            var companyProfile = dalServiceData.Companies.FindEntity(x => x.Id == companyId);
             var mappedCompanyPositions = companyProfile.Positions.Select(x => new CreatedPosition(x.Id, x.PositionName)).ToList();
             var country = dalServiceData.Countries.FindEntity(x => x.CountryId == companyProfile.CountryId);
 
@@ -43,6 +45,18 @@ namespace LocalApplicationServices.ProfileManagement.Managers
                         }).ToList();
 
             return new Profile() { UserExperience = userExperience };
+        }
+
+        public IList<UserSuitiblePosition> GetSuitiblePositions(string sectorIdQuery, string countryIdQuery, string userId)
+        {
+            int? sectorId = !string.IsNullOrWhiteSpace(sectorIdQuery) ? int.Parse(sectorIdQuery) : (int?)null;
+            int? countryId = !string.IsNullOrWhiteSpace(countryIdQuery) ? int.Parse(countryIdQuery) : (int?)null;
+
+            var user = dalServiceData.Users.FindEntity(x => x.Email == userId);
+
+            var matchedPositions = new UserMatchingExecutor(dalServiceData).Match(user, sectorId, countryId);
+
+            return matchedPositions;
         }
     }
 }
