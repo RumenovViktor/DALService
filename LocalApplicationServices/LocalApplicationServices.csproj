@@ -67,8 +67,9 @@
     <Compile Include="RegistrationLogin\Implementation\Managers\BusinessInfoProvider.cs" />
     <Compile Include="RegistrationLogin\Implementation\Managers\CommonInfoManager.cs" />
     <Compile Include="RegistrationLogin\Implementation\RegistrationApplicationServiceLocal.cs" />
-    <Compile Include="Validations\Contracts\ICompanyValidations.cs" />
+    <Compile Include="Validations\Contracts\IValidations.cs" />
     <Compile Include="Validations\CompanyValidations.cs" />
+    <Compile Include="Validations\UserValidations.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">

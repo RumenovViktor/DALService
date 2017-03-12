@@ -15,6 +15,7 @@
     using LocalApplicationServices.ProfileManagement.Managers;
     using LocalApplicationServices.Validations;
     using ApplicationServices;
+    using Models;
 
     public class AutofacContainer
     {
@@ -43,7 +44,8 @@
                    .As<LocalApplicationServices.IFileManagementApplicationService>();
             builder.RegisterType<ProfileApplicationServiceLocal>().As<IProfileApplicationService>();
             builder.RegisterType<ProfileManager>().As<IProfileManager>();
-            builder.RegisterType<CompanyValidations>().As<ICompanyValidations>();
+            builder.RegisterType<CompanyValidations>().As<IValidations<CompanyLogin>>();
+            builder.RegisterType<UserValidations>().As<IValidations<UserLogin>>();
             builder.RegisterType<CompanyProfileApplicationServiceLocal>().As<ICompanyProfileApplicationService>();
             builder.RegisterType<LocalApplicationServices.SkillsManager>().As<ISkillsManager>();
             builder.RegisterType<SkillsApplicationServiceLocal>().As<ISkillsApplicationService>();

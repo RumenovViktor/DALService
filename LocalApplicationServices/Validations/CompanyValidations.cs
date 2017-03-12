@@ -4,13 +4,13 @@
     using Models;
     using Data.Unit_Of_Work;
 
-    public class CompanyValidations : Base, ICompanyValidations
+    public class CompanyValidations : Base, IValidations<CompanyLogin>
     {
         public CompanyValidations(IDALServiceData dalServiceData) : base(dalServiceData) { }
 
-        public CompanyLogin ValidateCompanyLogin(CompanyLogin companyLoginModel)
+        public CompanyLogin ValidateLogin(CompanyLogin loginModel)
         {
-            var company = dalServiceData.Companies.FindEntity(x => x.Name == companyLoginModel.CompanyName && x.Password == companyLoginModel.Password);
+            var company = dalServiceData.Companies.FindEntity(x => x.Name == loginModel.CompanyName && x.Password == loginModel.Password);
             var doesCompanyExist = company != null;
 
             if (doesCompanyExist)
