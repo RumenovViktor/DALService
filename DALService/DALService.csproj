@@ -222,6 +222,7 @@
     <Compile Include="Controllers\Base\BaseApiController.cs" />
     <Compile Include="Controllers\BusinessInfoController.cs" />
     <Compile Include="Controllers\CompanyProfileController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -257,6 +258,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\CompanyProfile\" />
+    <Folder Include="Views\Dashboard\" />
     <Folder Include="Views\Registration\" />
     <Folder Include="Views\Skills\" />
   </ItemGroup>

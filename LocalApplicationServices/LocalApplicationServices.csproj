@@ -52,11 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base.cs" />
+    <Compile Include="ProfileManagement\Contracts\IDashboardManager.cs" />
     <Compile Include="ProfileManagement\Contracts\IProfileApplicationService.cs" />
     <Compile Include="ProfileManagement\Contracts\IProfileManager.cs" />
     <Compile Include="ProfileManagement\Implementation\CompanyProfileApplicationServiceLocal.cs" />
     <Compile Include="ProfileManagement\Implementation\ProfileApplicationServiceLocal.cs" />
     <Compile Include="ProfileManagement\Implementation\SkillsApplicationServiceLocal.cs" />
+    <Compile Include="ProfileManagement\Managers\DashboardManager.cs" />
     <Compile Include="ProfileManagement\Managers\ProfileManager.cs" />
     <Compile Include="ProfileManagement\Managers\SkillsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
