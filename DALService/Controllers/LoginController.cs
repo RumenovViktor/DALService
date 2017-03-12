@@ -11,17 +11,27 @@ namespace DALService.Controllers
 {
     public class LoginController : BaseApiController
     {
-        private readonly ICompanyValidations companyValidations;
+        private readonly IValidations<CompanyLogin> companyValidations;
+        private readonly IValidations<UserLogin> userValidations;
 
-        public LoginController(ICompanyValidations companyValidations)
+        public LoginController(IValidations<CompanyLogin> companyValidations, IValidations<UserLogin> userValidations)
         {
             this.companyValidations = companyValidations;
+            this.userValidations = userValidations;
         }
 
         [HttpGet]
-        public HttpResponseMessage GetUser()
+        public HttpResponseMessage UserLogin()
         {
-            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, string.Format("{0}, is not valid."));
+            return ExecuteAction(() =>
+            {
+                var queryString = Request.GetQueryNameValuePairs();
+
+                var email = queryString.ToArray()[0].Value;
+                var password = queryString.ToArray()[1].Value;
+
+                return userValidations.ValidateLogin(new UserLogin(email, password));
+            });
         }
 
         [HttpGet]
@@ -35,7 +45,7 @@ namespace DALService.Controllers
             var companyName = queryString.ToArray()[0].Value;
             var companyPassowrd = queryString.ToArray()[1].Value;
 
-            var doesCompanyExist = companyValidations.ValidateCompanyLogin(new CompanyLogin(companyName, companyPassowrd));
+            var doesCompanyExist = companyValidations.ValidateLogin(new CompanyLogin(companyName, companyPassowrd));
 
             return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(doesCompanyExist));
         }
