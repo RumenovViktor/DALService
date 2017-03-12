@@ -15,11 +15,15 @@
             {
                 return new UserLogin()
                 {
+                    UserId = user.UserId,
                     DoesUserExists = true
                 };
             }
 
-            return new UserLogin();
+            return new UserLogin()
+            {
+                DoesUserExists = false
+            };
         }
     }
 }

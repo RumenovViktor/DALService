@@ -6,6 +6,7 @@
     using DTOs.Models;
     using Data.Unit_Of_Work;
     using Models.Profile;
+    using Models;
 
     public class UserMatchingExecutor : MatchingExecutor<User, UserSuitiblePosition>
     {

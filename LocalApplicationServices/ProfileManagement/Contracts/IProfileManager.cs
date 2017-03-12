@@ -1,4 +1,5 @@
 ﻿using Models;
+using Models.Dashboard;
 using Models.Profile;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,6 +12,6 @@ namespace LocalApplicationServices.ProfileManagement.Contracts
 
         CompanyProfile GetCompanyProfile(long companyId);
 
-        IList<UserSuitiblePosition> GetSuitiblePositions(string sectorId, string countryId, string userId);
+        UserDashboardProfile GetUserDashboardProfile(long userId);
     }
 }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Models.Global;
 using Models.Profile;
 using Executors;
+using Models.Dashboard;
 
 namespace LocalApplicationServices.ProfileManagement.Managers
 {
@@ -47,16 +48,12 @@ namespace LocalApplicationServices.ProfileManagement.Managers
             return new Profile() { UserExperience = userExperience };
         }
 
-        public IList<UserSuitiblePosition> GetSuitiblePositions(string sectorIdQuery, string countryIdQuery, string userId)
+        public UserDashboardProfile GetUserDashboardProfile(long userId)
         {
-            int? sectorId = !string.IsNullOrWhiteSpace(sectorIdQuery) ? int.Parse(sectorIdQuery) : (int?)null;
-            int? countryId = !string.IsNullOrWhiteSpace(countryIdQuery) ? int.Parse(countryIdQuery) : (int?)null;
+            var user = dalServiceData.Users.FindEntity(x => x.UserId == userId);
+            var userCurrentPosition = user.Experience.Where(x => !x.ToDate.HasValue).FirstOrDefault();
 
-            var user = dalServiceData.Users.FindEntity(x => x.Email == userId);
-
-            var matchedPositions = new UserMatchingExecutor(dalServiceData).Match(user, sectorId, countryId);
-
-            return matchedPositions;
+            return new UserDashboardProfile(user.FirstName + " " + user.LastName, userCurrentPosition != null ? userCurrentPosition.PositionName : string.Empty);
         }
     }
 }

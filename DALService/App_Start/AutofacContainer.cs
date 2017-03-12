@@ -50,6 +50,7 @@
             builder.RegisterType<LocalApplicationServices.SkillsManager>().As<ISkillsManager>();
             builder.RegisterType<SkillsApplicationServiceLocal>().As<ISkillsApplicationService>();
             builder.RegisterType<LocalApplicationServices.CommonInfoManager>().As<ICommonInfoManager>();
+            builder.RegisterType<LocalApplicationServices.DashboardManager>().As<LocalApplicationServices.IDashboardManager>();
         }
     }
 }
