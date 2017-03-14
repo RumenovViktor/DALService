@@ -78,6 +78,9 @@
             dalServiceData.Users.AddEntity(newUser);
             dalServiceData.Users.SaveChanges();
 
+            existingUser = dalServiceData.Users.FindEntity(x => x.Email == command.Email);
+            command.UserId = existingUser.UserId;
+
             return command;
         }
     }
